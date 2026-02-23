@@ -4,6 +4,7 @@ import Contacto from '../Sections/Contacto/Contacto'
 import Marcas from '../Sections/Marcas/Marcas'
 import QuienesSomos from '../Sections/QuienesSomos/QuienesSomos'
 import Valores from '../Sections/Valores/Valores'
+import WhatsappFloat from '../Sections/Contacto/WhatsappFloat';
 import style from "./Landing.module.css";
 
 
@@ -18,6 +19,7 @@ const LandingPage = () => {
                 <Marcas />
                 <Contacto />
             </div>
+            <WhatsappFloat />
         </div>
     )
 }
