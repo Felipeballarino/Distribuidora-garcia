@@ -3,6 +3,7 @@ import { TextField, Button, Box, Snackbar, Alert } from "@mui/material";
 import { Mail, Phone, Place } from "@mui/icons-material";
 import styles from "./contacto.module.css";
 import { sendEmail } from "../../services/EmailSevice";
+import { trackFormConversion } from "../../asses/googleAdsTracking";
 
 const Contacto = () => {
     const [open, setOpen] = useState(false);
@@ -87,7 +88,7 @@ const Contacto = () => {
                         InputProps={{ style: { color: "white", borderColor: "white" } }}
                         InputLabelProps={{ style: { color: "white", background: "#182f65" } }}
                     />
-                    <Button variant="contained" sx={{ background: "#ffd418", width: "30%", height: "40px", fontWeight: "bold" }} type="submit">
+                    <Button variant="contained" sx={{ background: "#ffd418", width: "30%", height: "40px", fontWeight: "bold" }} type="submit" onClick={trackFormConversion}>
                         Enviar
                     </Button>
                 </Box>
