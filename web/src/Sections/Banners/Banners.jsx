@@ -1,9 +1,9 @@
 import banner1 from "../../assets/banner1.png";
 import banner2 from "../../assets/banner2.jpeg";
 import banner3 from "../../assets/banner3.jpg";
-import { trackWhatsappConversion } from "../../assets/googleAdsTracking";
+import { trackWhatsappConversion } from "../../assets/googleAdsTracking.js";
 import style from "./banners.module.css";
-const whatsappLink = "https://api.whatsapp.com/send/?phone=5491136730478&text=Hola,%20quiero%20consultar%20por%20los%20productos";
+const whatsappLink = "https://api.whatsapp.com/send/?phone=5491136730478&text=Hola%20Distribuidora%20Garcia.%20Me%20podrían%20pasar%20el%20listado%20de%20precios%20mayorista";
 import { Carousel } from "antd";
 
 const bannersData = [
