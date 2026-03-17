@@ -3,7 +3,7 @@ import { TextField, Button, Box, Snackbar, Alert } from "@mui/material";
 import { Mail, Phone, Place } from "@mui/icons-material";
 import styles from "./contacto.module.css";
 import { sendEmail } from "../../services/EmailSevice";
-import { trackFormConversion } from "../../assets/googleAdsTracking";
+import { trackFormConversion } from "../../assets/googleAdsTracking.js";
 
 const Contacto = () => {
     const [open, setOpen] = useState(false);
