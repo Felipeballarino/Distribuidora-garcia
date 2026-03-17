@@ -8,6 +8,8 @@ const whatsappLink =
 const WhatsappFloat = () => {
   const openWhatsapp = (e) => {
     e.preventDefault();
+    console.log("CLICK EN WHATSAPP");
+    console.log("window.gtag:", window.gtag);
     trackWhatsappConversion(whatsappLink);
   };
 
