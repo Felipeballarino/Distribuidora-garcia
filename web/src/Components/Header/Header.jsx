@@ -24,7 +24,6 @@ const Header = () => {
     useEffect(() => {
         const handleScroll = () => {
             const scrollY = window.scrollY;
-            // Cuando el scroll baja más de 400px, ocultamos el header
             if (scrollY > 400) {
                 setHideHeader(true);
             } else {
@@ -60,7 +59,6 @@ const Header = () => {
         }
     };
 
-
     const handleLogout = () => {
         sessionStorage.removeItem(TOKEN);
         setIsAuthenticated(false);
@@ -91,6 +89,38 @@ const Header = () => {
         }, 3000);
     };
 
+    const handleOpenOfertas = () => {
+        window.open("https://drive.google.com/file/d/1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex/view?usp=drive_link", "_blank");
+    };
+
+    // Botones autenticados reutilizables
+    const AuthButtons = () => (
+        <>
+            <Button
+                onClick={() => handleDownload("pdf")}
+                disabled={isDownloadingXLSX}
+                loading={isDownloadingPDF}
+                icon={<PictureAsPdfIcon />}
+            >
+                Precios.pdf
+            </Button>
+            <Button
+                onClick={() => handleDownload("xlsx")}
+                disabled={isDownloadingPDF}
+                loading={isDownloadingXLSX}
+                icon={<UploadFileIcon />}
+            >
+                Precios.xlsx
+            </Button>
+            <Button
+                onClick={handleOpenOfertas}
+                icon={<PictureAsPdfIcon />}
+            >
+                Ofertas.pdf
+            </Button>
+        </>
+    );
+
     return (
         <>
             <LoginModal open={open} setOpen={setOpen} setIsAuthenticated={setIsAuthenticated} />
@@ -115,63 +145,34 @@ const Header = () => {
                             <p>Ingresar</p>
                         </button>
                     )}
-
                 </div>
+
                 {isMobile ?
                     <div className={`${style.mobileMenu} ${menuOpen ? style.menuOpen : ""}`}>
-                        <ul  >
+                        <ul>
                             <li><button onClick={() => handleScroll("sobre-nosotros")}>Sobre Nosotros</button></li>
                             <li><button onClick={() => handleScroll("nuestras-marcas")}>Nuestras Marcas</button></li>
                             <li><button onClick={() => handleScroll("contactos-redes")}>Contactos y redes</button></li>
                             {isAuthenticated && (
                                 <li style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                                    <Button
-                                        onClick={() => handleDownload("pdf")}
-                                        disabled={isDownloadingXLSX}
-                                        loading={isDownloadingPDF}
-                                        icon={<PictureAsPdfIcon />}
-                                    >
-                                        Precios.pdf
-                                    </Button>
-                                    <Button
-                                        onClick={() => handleDownload("xlsx")}
-                                        disabled={isDownloadingPDF}
-                                        loading={isDownloadingXLSX}
-                                        icon={<UploadFileIcon />}
-                                    >
-                                        Precios.xlsx
-                                    </Button>
+                                    <AuthButtons />
                                 </li>
                             )}
                         </ul>
                     </div>
                     :
-                    <ul className={style.menu} >
+                    <ul className={style.menu}>
                         <li><button onClick={() => handleScroll("sobre-nosotros")}>Sobre Nosotros</button></li>
                         <li><button onClick={() => handleScroll("nuestras-marcas")}>Nuestras Marcas</button></li>
                         <li><button onClick={() => handleScroll("contactos-redes")}>Contactos y redes</button></li>
                         {isAuthenticated && (
                             <li style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                                <Button
-                                    onClick={() => handleDownload("pdf")}
-                                    disabled={isDownloadingXLSX}
-                                    loading={isDownloadingPDF}
-                                    icon={<PictureAsPdfIcon />}
-                                >
-                                    Precios.pdf
-                                </Button>
-                                <Button
-                                    onClick={() => handleDownload("xlsx")}
-                                    disabled={isDownloadingPDF}
-                                    loading={isDownloadingXLSX}
-                                    icon={<UploadFileIcon />}
-                                >
-                                    Precios.xlsx
-                                </Button>
+                                <AuthButtons />
                             </li>
                         )}
-                    </ul>}
-            </div >
+                    </ul>
+                }
+            </div>
         </>
     );
 };
