@@ -48,7 +48,6 @@ const Header = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-
     const handleScroll = (id) => {
         const section = document.getElementById(id);
         if (section) {
@@ -89,38 +88,6 @@ const Header = () => {
         }, 3000);
     };
 
-    const handleOpenOfertas = () => {
-        window.open("https://drive.google.com/file/d/1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex/view?usp=drive_link", "_blank");
-    };
-
-    // Botones autenticados reutilizables
-    const AuthButtons = () => (
-        <>
-            <Button
-                onClick={() => handleDownload("pdf")}
-                disabled={isDownloadingXLSX}
-                loading={isDownloadingPDF}
-                icon={<PictureAsPdfIcon />}
-            >
-                Precios.pdf
-            </Button>
-            <Button
-                onClick={() => handleDownload("xlsx")}
-                disabled={isDownloadingPDF}
-                loading={isDownloadingXLSX}
-                icon={<UploadFileIcon />}
-            >
-                Precios.xlsx
-            </Button>
-            <Button
-                onClick={handleOpenOfertas}
-                icon={<PictureAsPdfIcon />}
-            >
-                Ofertas.pdf
-            </Button>
-        </>
-    );
-
     return (
         <>
             <LoginModal open={open} setOpen={setOpen} setIsAuthenticated={setIsAuthenticated} />
@@ -155,7 +122,28 @@ const Header = () => {
                             <li><button onClick={() => handleScroll("contactos-redes")}>Contactos y redes</button></li>
                             {isAuthenticated && (
                                 <li style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                                    <AuthButtons />
+                                    <Button
+                                        onClick={() => handleDownload("pdf")}
+                                        disabled={isDownloadingXLSX}
+                                        loading={isDownloadingPDF}
+                                        icon={<PictureAsPdfIcon />}
+                                    >
+                                        Precios.pdf
+                                    </Button>
+                                    <Button
+                                        onClick={() => handleDownload("xlsx")}
+                                        disabled={isDownloadingPDF}
+                                        loading={isDownloadingXLSX}
+                                        icon={<UploadFileIcon />}
+                                    >
+                                        Precios.xlsx
+                                    </Button>
+                                    <Button
+                                        onClick={() => window.open("https://drive.google.com/file/d/1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex/view?usp=drive_link", "_blank")}
+                                        icon={<PictureAsPdfIcon />}
+                                    >
+                                        Ofertas.pdf
+                                    </Button>
                                 </li>
                             )}
                         </ul>
@@ -167,7 +155,28 @@ const Header = () => {
                         <li><button onClick={() => handleScroll("contactos-redes")}>Contactos y redes</button></li>
                         {isAuthenticated && (
                             <li style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                                <AuthButtons />
+                                <Button
+                                    onClick={() => handleDownload("pdf")}
+                                    disabled={isDownloadingXLSX}
+                                    loading={isDownloadingPDF}
+                                    icon={<PictureAsPdfIcon />}
+                                >
+                                    Precios.pdf
+                                </Button>
+                                <Button
+                                    onClick={() => handleDownload("xlsx")}
+                                    disabled={isDownloadingPDF}
+                                    loading={isDownloadingXLSX}
+                                    icon={<UploadFileIcon />}
+                                >
+                                    Precios.xlsx
+                                </Button>
+                                <Button
+                                    onClick={() => window.open("https://drive.google.com/file/d/1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex/view?usp=drive_link", "_blank")}
+                                    icon={<PictureAsPdfIcon />}
+                                >
+                                    Ofertas.pdf
+                                </Button>
                             </li>
                         )}
                     </ul>
