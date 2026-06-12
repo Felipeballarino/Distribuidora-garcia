@@ -17,6 +17,7 @@ const Header = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isDownloadingPDF, setIsDownloadingPDF] = useState(false)
     const [isDownloadingXLSX, setIsDownloadingXLSX] = useState(false)
+    const [isDownloadingOfertas, setIsDownloadingOfertas] = useState(false)
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [menuOpen, setMenuOpen] = useState(false);
     const [hideHeader, setHideHeader] = useState(false);
@@ -72,20 +73,26 @@ const Header = () => {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-        } else {
-            setIsDownloadingXLSX(true)
+            setTimeout(() => setIsDownloadingPDF(false), 3000);
+        } else if (type === "xlsx") {
+            setIsDownloadingXLSX(true);
             const link = document.createElement("a");
             link.href = "https://docs.google.com/spreadsheets/d/1x83v253A7YOT64wbOZPP8Zfu2BvBevIR/export?format=xlsx";
             link.setAttribute("download", "precios.xlsx");
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
+            setTimeout(() => setIsDownloadingXLSX(false), 3000);
+        } else if (type === "ofertas") {
+            setIsDownloadingOfertas(true);
+            const link = document.createElement("a");
+            link.href = "https://drive.google.com/uc?export=download&id=1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex";
+            link.setAttribute("download", "ofertas.pdf");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setTimeout(() => setIsDownloadingOfertas(false), 3000);
         }
-
-        setTimeout(() => {
-            setIsDownloadingXLSX(false);
-            setIsDownloadingPDF(false)
-        }, 3000);
     };
 
     return (
@@ -124,7 +131,7 @@ const Header = () => {
                                 <li style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                                     <Button
                                         onClick={() => handleDownload("pdf")}
-                                        disabled={isDownloadingXLSX}
+                                        disabled={isDownloadingXLSX || isDownloadingOfertas}
                                         loading={isDownloadingPDF}
                                         icon={<PictureAsPdfIcon />}
                                     >
@@ -132,14 +139,16 @@ const Header = () => {
                                     </Button>
                                     <Button
                                         onClick={() => handleDownload("xlsx")}
-                                        disabled={isDownloadingPDF}
+                                        disabled={isDownloadingPDF || isDownloadingOfertas}
                                         loading={isDownloadingXLSX}
                                         icon={<UploadFileIcon />}
                                     >
                                         Precios.xlsx
                                     </Button>
                                     <Button
-                                        onClick={() => window.open("https://drive.google.com/file/d/1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex/view?usp=drive_link", "_blank")}
+                                        onClick={() => handleDownload("ofertas")}
+                                        disabled={isDownloadingPDF || isDownloadingXLSX}
+                                        loading={isDownloadingOfertas}
                                         icon={<PictureAsPdfIcon />}
                                     >
                                         Ofertas.pdf
@@ -157,7 +166,7 @@ const Header = () => {
                             <li style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                                 <Button
                                     onClick={() => handleDownload("pdf")}
-                                    disabled={isDownloadingXLSX}
+                                    disabled={isDownloadingXLSX || isDownloadingOfertas}
                                     loading={isDownloadingPDF}
                                     icon={<PictureAsPdfIcon />}
                                 >
@@ -165,14 +174,16 @@ const Header = () => {
                                 </Button>
                                 <Button
                                     onClick={() => handleDownload("xlsx")}
-                                    disabled={isDownloadingPDF}
+                                    disabled={isDownloadingPDF || isDownloadingOfertas}
                                     loading={isDownloadingXLSX}
                                     icon={<UploadFileIcon />}
                                 >
                                     Precios.xlsx
                                 </Button>
                                 <Button
-                                    onClick={() => window.open("https://drive.google.com/file/d/1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex/view?usp=drive_link", "_blank")}
+                                    onClick={() => handleDownload("ofertas")}
+                                    disabled={isDownloadingPDF || isDownloadingXLSX}
+                                    loading={isDownloadingOfertas}
                                     icon={<PictureAsPdfIcon />}
                                 >
                                     Ofertas.pdf
