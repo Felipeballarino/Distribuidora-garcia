@@ -83,7 +83,7 @@ const Header = () => {
             link.click();
             document.body.removeChild(link);
             setTimeout(() => setIsDownloadingXLSX(false), 3000);
-        } else if (type === "ofertas") {
+                } else if (type === "ofertas") {
             setIsDownloadingOfertas(true);
             window.open("https://drive.google.com/uc?export=download&id=1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex", "_blank");
             setTimeout(() => setIsDownloadingOfertas(false), 3000);
