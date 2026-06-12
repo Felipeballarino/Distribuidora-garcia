@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Box, Modal, TextField, Button, Typography } from "@mui/material";
+import { Box, Modal, TextField, Button, Typography, InputAdornment, IconButton } from "@mui/material";
 import PropTypes from "prop-types";
 import { Alert } from "antd";
 import { TOKEN } from "../constant/api";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const style = {
     position: "absolute",
@@ -24,7 +26,7 @@ const LoginModal = ({ open, setOpen, setIsAuthenticated }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
-
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleClose = () => {
         setOpen(false);
@@ -33,25 +35,22 @@ const LoginModal = ({ open, setOpen, setIsAuthenticated }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         setError(null);
-
         try {
             const response = await fetch("https://enddg-production.up.railway.app/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
             });
-
             if (!response.ok) {
                 throw new Error("Usuario o contraseña incorrectos");
             }
-            sessionStorage.setItem(TOKEN, true); // Guardar sesión en localStorage
-            setIsAuthenticated(true); // Actualizar estado global
+            sessionStorage.setItem(TOKEN, true);
+            setIsAuthenticated(true);
             setOpen(false);
         } catch (err) {
             setError(err.message);
         }
     };
-
 
     return (
         <Modal
@@ -62,7 +61,7 @@ const LoginModal = ({ open, setOpen, setIsAuthenticated }) => {
         >
             <Box sx={{ ...style, "@media (max-width: 480px)": { width: "70%", top: "40%" } }}
                 component="form" onSubmit={handleSubmit}>
-                <Typography variant="h6" component="h2" sx={{ color: "#182f65", fontWeight: "bold", textTransform: "uppercase" }} >
+                <Typography variant="h6" component="h2" sx={{ color: "#182f65", fontWeight: "bold", textTransform: "uppercase" }}>
                     Iniciar Sesión
                 </Typography>
                 {error && <Alert severity="error">{error}</Alert>}
@@ -74,17 +73,27 @@ const LoginModal = ({ open, setOpen, setIsAuthenticated }) => {
                     onChange={(e) => setUsername(e.target.value)}
                     required
                 />
-
                 <TextField
                     label="Contraseña"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     fullWidth
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    InputProps={{
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    edge="end"
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        )
+                    }}
                 />
-
-                <Button type="submit" variant="contained" style={{ background: "#182f65" }} fullWidth >
+                <Button type="submit" variant="contained" style={{ background: "#182f65" }} fullWidth>
                     Ingresar
                 </Button>
             </Box>
