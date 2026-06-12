@@ -85,12 +85,7 @@ const Header = () => {
             setTimeout(() => setIsDownloadingXLSX(false), 3000);
         } else if (type === "ofertas") {
             setIsDownloadingOfertas(true);
-            const link = document.createElement("a");
-            link.href = "https://drive.google.com/file/d/1y3lBRVWNYPVpWW6O4ZlvFPQfJm5B4PJq/view";
-            link.setAttribute("download", "ofertas.pdf");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            window.open("https://drive.google.com/uc?export=download&id=1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex", "_blank");
             setTimeout(() => setIsDownloadingOfertas(false), 3000);
         }
     };
