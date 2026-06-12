@@ -85,7 +85,12 @@ const Header = () => {
             setTimeout(() => setIsDownloadingXLSX(false), 3000);
         } else if (type === "ofertas") {
             setIsDownloadingOfertas(true);
-            window.open("https://drive.google.com/uc?export=download&id=1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex", "_blank");
+            const link = document.createElement("a");
+            link.href = "https://drive.google.com/uc?export=download&id=1UlyPNg-VOQiYB3DN4pz0xvmo7-DN7sex";
+            link.setAttribute("download", "DESTACADOS.pdf");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
             setTimeout(() => setIsDownloadingOfertas(false), 3000);
         }
     };
