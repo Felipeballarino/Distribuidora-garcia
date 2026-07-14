@@ -48,7 +48,7 @@ const Banners = () => {
         ))}
       </Carousel>
       <div className={style.infoText}>
-        <h1>Promociones Vigentes.</h1>
+        <h1>Donde la calidad y el servicio se encuentran.</h1>
       </div>
     </div>
   );
