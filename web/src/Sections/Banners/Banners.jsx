@@ -33,6 +33,8 @@ const promocionesData = [
   { id: "1YkDCXbQWJFfDkcJY9ebPv7CzA5CAGGCu" },
 ];
 
+const waLink = "https://api.whatsapp.com/send/?phone=5491136730478";
+
 const Banners = () => {
   const openWhatsapp = () => {
     trackWhatsappConversion(whatsappLink);
@@ -46,7 +48,7 @@ const Banners = () => {
             <div className={style.overlay}>
               <img
                 src={banner.image}
-                alt={`banner${index + 1}`}
+                alt={"banner" + (index + 1)}
                 className={style.bannerImage}
               />
               <div className={style.textContainer}>
@@ -66,12 +68,13 @@ const Banners = () => {
 
       <div className={style.promocionesGrid}>
         {promocionesData.map((promo, index) => (
-          <img
-            key={index}
-            src={"https://drive.google.com/thumbnail?id=" + promo.id + "&sz=w400"}
-            alt={"promocion" + (index + 1)}
-            className={style.promocionImg}
-          />
+          <a key={index} href={waLink} target="_blank" rel="noopener noreferrer">
+            <img
+              src={"https://drive.google.com/thumbnail?id=" + promo.id + "&sz=w400"}
+              alt={"promocion" + (index + 1)}
+              className={style.promocionImg}
+            />
+          </a>
         ))}
       </div>
     </div>
