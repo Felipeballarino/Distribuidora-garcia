@@ -1,3 +1,29 @@
+.promocionesGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  padding: 1rem 2rem 2rem;
+}
+
+.promocionImg {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.promocionImg:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .promocionesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .infoText {
     display: flex;
     justify-content: center;
