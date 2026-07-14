@@ -8,10 +8,10 @@ const Valores = () => {
     return (
         <div className={style.valores}>
             <ul>
-                <li><IoMdTrendingUp /> Perseverancia</li>
-                <li><GiSandsOfTime /> Constancia</li>
-                <li><MdFavorite /> Sacrificio</li>
-                <li><FaShieldAlt /> Integridad</li>
+                <li><IoMdTrendingUp /> Perseverancia.</li>
+                <li><GiSandsOfTime /> Constancia.</li>
+                <li><MdFavorite /> Sacrificio.</li>
+                <li><FaShieldAlt /> Integridad.</li>
             </ul>
         </div>
     )
