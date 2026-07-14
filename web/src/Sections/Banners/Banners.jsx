@@ -1,5 +1,4 @@
 import { Carousel } from "antd";
-import { useEffect, useState } from "react";
 import banner1 from "../../assets/banner1.png";
 import banner2 from "../../assets/banner2.jpeg";
 import banner3 from "../../assets/banner3.jpg";
@@ -24,14 +23,6 @@ const bannersData = [
     title: "Conozca nuestras marcas",
     buttonText: "Contactar por WhatsApp",
   },
-];
-
-const promocionesData = [
-  { id: "1_8OTZu6xAE-zWZBpsx4-YKtD7Xb9o5Im" },
-  { id: "1PTLLat0dF7zRD9amQHlxrGyo7AmvwZ_G" },
-  { id: "1fM8fVYrGDkd2alFo1AD6xCxUJIIs9-u7" },
-  { id: "1YvMjVDyjjHLBCvbcuDnwOjpb6T9RP5c7" },
-  { id: "1YkDCXbQWJFfDkcJY9ebPv7CzA5CAGGCu" },
 ];
 
 const Banners = () => {
@@ -60,26 +51,8 @@ const Banners = () => {
           </div>
         ))}
       </Carousel>
-
       <div className={style.infoText}>
         <h1>Promociones vigentes</h1>
-      </div>
-
-      <div className={style.promocionesGrid}>
-        {promocionesData.map((promo, index) => (
-          
-            key={index}
-            href="https://api.whatsapp.com/send/?phone=5491136730478"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src={`https://drive.google.com/thumbnail?id=${promo.id}&sz=w400`}
-              alt={`promocion${index + 1}`}
-              className={style.promocionImg}
-            />
-          </a>
-        ))}
       </div>
     </div>
   );
