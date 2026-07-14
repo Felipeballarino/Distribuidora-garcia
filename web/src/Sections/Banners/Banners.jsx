@@ -66,18 +66,12 @@ const Banners = () => {
 
       <div className={style.promocionesGrid}>
         {promocionesData.map((promo, index) => (
-          
+          <img
             key={index}
-            href="https://api.whatsapp.com/send/?phone=5491136730478"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src={`https://drive.google.com/thumbnail?id=${promo.id}&sz=w400`}
-              alt={`promocion${index + 1}`}
-              className={style.promocionImg}
-            />
-          </a>
+            src={"https://drive.google.com/thumbnail?id=" + promo.id + "&sz=w400"}
+            alt={"promocion" + (index + 1)}
+            className={style.promocionImg}
+          />
         ))}
       </div>
     </div>
