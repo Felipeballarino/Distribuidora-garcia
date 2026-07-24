@@ -42,6 +42,20 @@ const Banners = () => {
 
   return (
     <div>
+      <div className={style.infoText}>
+        <h1>Promociones vigentes</h1>
+      </div>
+      <div className={style.promocionesGrid}>
+        {promocionesData.map((promo, index) => (
+          <a key={index} href={waLink} target="_blank" rel="noopener noreferrer">
+            <img
+              src={"https://drive.google.com/thumbnail?id=" + promo.id + "&sz=w400"}
+              alt={"promocion" + (index + 1)}
+              className={style.promocionImg}
+            />
+          </a>
+        ))}
+      </div>
       <Carousel autoplay id="home" className={style.banners}>
         {bannersData.map((banner, index) => (
           <div key={index} className={style.bannerItem}>
@@ -61,22 +75,6 @@ const Banners = () => {
           </div>
         ))}
       </Carousel>
-
-      <div className={style.infoText}>
-        <h1>Promociones vigentes</h1>
-      </div>
-
-      <div className={style.promocionesGrid}>
-        {promocionesData.map((promo, index) => (
-          <a key={index} href={waLink} target="_blank" rel="noopener noreferrer">
-            <img
-              src={"https://drive.google.com/thumbnail?id=" + promo.id + "&sz=w400"}
-              alt={"promocion" + (index + 1)}
-              className={style.promocionImg}
-            />
-          </a>
-        ))}
-      </div>
     </div>
   );
 };
