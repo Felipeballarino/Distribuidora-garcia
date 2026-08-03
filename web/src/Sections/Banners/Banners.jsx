@@ -29,7 +29,7 @@ const promocionesData = [
   { id: "1_8OTZu6xAE-zWZBpsx4-YKtD7Xb9o5Im" },
   { id: "1PTLLat0dF7zRD9amQHlxrGyo7AmvwZ_G" },
   { id: "1fM8fVYrGDkd2alFo1AD6xCxUJIIs9-u7" },
-  { id: "1YvMjVDyjjHLBCvbcuDnwOjpb6T9RP5c7" },
+  { id: "19SANR0z6QPajfRjDoiRrLSa4hr6mfdlH" },
   { id: "1YkDCXbQWJFfDkcJY9ebPv7CzA5CAGGCu" },
 ];
 
